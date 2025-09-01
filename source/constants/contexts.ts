@@ -692,6 +692,49 @@ export default Object.freeze({
 			guidelines: {
 				title: localise("notices.information.sections.guidelines.title", locale)(),
 			},
+			bannedTopics: {
+				title: localise("notices.information.sections.bannedTopics.title", locale)(),
+				topics: {
+					socialIssues: {
+						title: localise(
+							"notices.information.sections.bannedTopics.topics.socialIssues.title",
+							locale,
+						)(),
+						examples: localise(
+							"notices.information.sections.bannedTopics.topics.socialIssues.examples",
+							locale,
+						)(),
+					},
+					religions: {
+						title: localise("notices.information.sections.bannedTopics.topics.religions.title", locale)(),
+						examples: localise(
+							"notices.information.sections.bannedTopics.topics.religions.examples",
+							locale,
+						)(),
+					},
+					doctrines: {
+						title: localise("notices.information.sections.bannedTopics.topics.doctrines.title", locale)(),
+						examples: localise(
+							"notices.information.sections.bannedTopics.topics.doctrines.examples",
+							locale,
+						)(),
+					},
+					conflicts: {
+						title: localise("notices.information.sections.bannedTopics.topics.conflicts.title", locale)(),
+						examples: localise(
+							"notices.information.sections.bannedTopics.topics.conflicts.examples",
+							locale,
+						)(),
+					},
+					otherTopics: {
+						title: localise("notices.information.sections.bannedTopics.topics.otherTopics.title", locale)(),
+						examples: localise(
+							"notices.information.sections.bannedTopics.topics.otherTopics.examples",
+							locale,
+						)(),
+					},
+				},
+			},
 			learning: {
 				buttons: {
 					resources: localise("notices.information.sections.learning.buttons.resources", locale)(),
