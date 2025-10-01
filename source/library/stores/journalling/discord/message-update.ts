@@ -11,6 +11,10 @@ const logger: EventLogger<"messageUpdate"> = (client, [message], { guildLocale }
 		return undefined;
 	}
 
+	if (oldMessage.content.trim().length === 0 && message.content.trim().length === 0) {
+		return undefined;
+	}
+
 	const strings = constants.contexts.messageUpdate({ localise: client.localise, locale: guildLocale });
 	return {
 		flags: Discord.MessageFlags.IsComponentV2,
