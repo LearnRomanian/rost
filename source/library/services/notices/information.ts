@@ -151,6 +151,26 @@ class InformationNoticeService extends NoticeService<{ type: "information" }> {
 							spacing: Discord.SeparatorSpacingSize.Large,
 						},
 						{
+							type: Discord.MessageComponentTypes.TextDisplay,
+							content: `### 🚫 ${strings.sections.bannedTopics.title}`,
+						},
+						{
+							type: Discord.MessageComponentTypes.TextDisplay,
+							content: [
+								strings.sections.bannedTopics.topics.socialIssues,
+								strings.sections.bannedTopics.topics.doctrines,
+								strings.sections.bannedTopics.topics.religions,
+								strings.sections.bannedTopics.topics.conflicts,
+								strings.sections.bannedTopics.topics.otherTopics,
+							]
+								.map((topic) => `- ${topic.title}\n  -# ${topic.examples}`)
+								.join("\n"),
+						},
+						{
+							type: Discord.MessageComponentTypes.Separator,
+							spacing: Discord.SeparatorSpacingSize.Large,
+						},
+						{
 							type: Discord.MessageComponentTypes.ActionRow,
 							components: [
 								{
