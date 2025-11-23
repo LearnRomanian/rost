@@ -695,6 +695,13 @@ export default Object.freeze({
 			bannedTopics: {
 				title: localise("notices.information.sections.bannedTopics.title", locale)(),
 				topics: {
+					politics: {
+						title: localise("notices.information.sections.bannedTopics.topics.politics.title", locale)(),
+						examples: localise(
+							"notices.information.sections.bannedTopics.topics.politics.examples",
+							locale,
+						)(),
+					},
 					socialIssues: {
 						title: localise(
 							"notices.information.sections.bannedTopics.topics.socialIssues.title",

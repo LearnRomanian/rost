@@ -157,6 +157,7 @@ class InformationNoticeService extends NoticeService<{ type: "information" }> {
 						{
 							type: Discord.MessageComponentTypes.TextDisplay,
 							content: [
+								strings.sections.bannedTopics.topics.politics,
 								strings.sections.bannedTopics.topics.socialIssues,
 								strings.sections.bannedTopics.topics.doctrines,
 								strings.sections.bannedTopics.topics.religions,

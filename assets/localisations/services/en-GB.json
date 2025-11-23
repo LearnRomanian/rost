@@ -2,6 +2,8 @@
   "notices.lastUpdate": "Last updated: {date}",
   "notices.information.sections.guidelines.title": "Guidelines",
   "notices.information.sections.bannedTopics.title": "Banned Topics",
+  "notices.information.sections.bannedTopics.topics.politics.title": "Politics",
+  "notices.information.sections.bannedTopics.topics.politics.examples": "e.g. Parties, political leanings, policies, elections, etc.",
   "notices.information.sections.bannedTopics.topics.socialIssues.title": "Social issues and movements",
   "notices.information.sections.bannedTopics.topics.socialIssues.examples": "e.g. Gender, Abortion, Migration, Crime, etc.",
   "notices.information.sections.bannedTopics.topics.religions.title": "Religion and theology",
