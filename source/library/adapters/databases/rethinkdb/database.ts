@@ -64,8 +64,8 @@ class RethinkDBAdapter extends DatabaseAdapter {
 		try {
 			this.#connection = await rethinkdb.r.connect(this.#connectionOptions);
 		} catch (error: any) {
-			this.log.error(error, `Failed to connect to database '${this.#databaseName}'.`);
-			throw error;
+			this.log.fatal(error, `Failed to connect to database '${this.#databaseName}'.`);
+			process.exit(1);
 		}
 
 		const databaseNames = await rethinkdb.r.dbList().run(this.#connection);
@@ -76,8 +76,8 @@ class RethinkDBAdapter extends DatabaseAdapter {
 			try {
 				await rethinkdb.r.dbCreate(this.#databaseName).run(this.#connection);
 			} catch (error: any) {
-				this.log.error(error, `Could not create database '${this.#databaseName}'.`);
-				throw error;
+				this.log.fatal(error, `Could not create database '${this.#databaseName}'.`);
+				process.exit(1);
 			}
 
 			this.log.info(`Created database '${this.#databaseName}'.`);

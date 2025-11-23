@@ -77,8 +77,8 @@ class RavenDBAdapter extends DatabaseAdapter {
 					new ravendb.CreateDatabaseOperation({ databaseName: this.#databaseName }),
 				);
 			} catch (error: any) {
-				this.log.error(error, `Could not create database '${this.#databaseName}'.`);
-				throw error;
+				this.log.fatal(error, `Could not create database '${this.#databaseName}'.`);
+				process.exit(1);
 			}
 
 			this.log.info(`Created database '${this.#databaseName}'.`);
