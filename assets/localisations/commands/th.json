@@ -364,7 +364,7 @@
   "music.options.stop.description": "หยุดการฟังปัจจุบัน ล้างคิวและประวัติเพลง",
   "music.options.stop.strings.stopped.title": "หยุด",
   "music.options.stop.strings.stopped.description": "การฟังเพลงได้ถูกหยุดแล้ว และคิวเพลงกับประวัติการฟังได้ถูกล้างแล้ว",
-  "music.options.unskip.name": "ข้าม",
+  "music.options.unskip.name": "เลิกข้าม",
   "music.options.unskip.description": "นำเพลงที่เล่นล่าสุดกลับมา",
   "music.options.unskip.strings.historyEmpty.title": "ประวัติว่างเปล่า",
   "music.options.unskip.strings.historyEmpty.description": "ไม่มีรายการเพลงที่จะนำกลับมา",

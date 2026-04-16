@@ -364,7 +364,7 @@
   "music.options.stop.description": "Зупиняє поточний сеанс прослуховування, очищаючи чергу та історію пісень.",
   "music.options.stop.strings.stopped.title": "Зупинився.",
   "music.options.stop.strings.stopped.description": "Сеанс прослуховування було зупинено, а чергу пісень та історію було очищено.",
-  "music.options.unskip.name": "пропустити",
+  "music.options.unskip.name": "повернути",
   "music.options.unskip.description": "Повертає останню відтворену пісню.",
   "music.options.unskip.strings.historyEmpty.title": "Історія порожня",
   "music.options.unskip.strings.historyEmpty.description": "Немає жодних списків пісень, які можна було б повернути.",

@@ -365,7 +365,7 @@
   "music.options.stop.description": "Lopettaa nykyisen kuunteluistunnon ja tyhjentää jonon ja kappaleiden historian.",
   "music.options.stop.strings.stopped.title": "Pysähtyi",
   "music.options.stop.strings.stopped.description": "Kuunteluistunto on lopetettu, ja kappalejono ja historia on tyhjennetty.",
-  "music.options.unskip.name": "ohita",
+  "music.options.unskip.name": "tuo-takaisin",
   "music.options.unskip.description": "Palauttaa viimeksi soitetun kappaleen.",
   "music.options.unskip.strings.historyEmpty.title": "Historia on tyhjä",
   "music.options.unskip.strings.historyEmpty.description": "Palautettavia biisilistoja ei ole.",
