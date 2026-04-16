@@ -2,6 +2,7 @@
 
 - Fixed notices getting created and deleted in a loop.
 - Removed unused dependencies.
+- Fixed missing channel causing voting on verifications to fail.
 
 ## 5.1.0
 
