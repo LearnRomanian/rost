@@ -151,7 +151,7 @@ function patchShoukakuWebSockets(): void {
 		this.reconnects = 0;
 		this.state = shoukaku.Constants.State.NEARLY;
 	};
-	shoukaku.Node.prototype.connect = function () {
+	shoukaku.Node.prototype.connect = async function () {
 		if (!this.manager.id) {
 			throw new Error("Don't connect a node when the library is not yet ready");
 		}
