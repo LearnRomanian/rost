@@ -535,6 +535,8 @@ class MusicSession extends EventEmitter {
 					)} on ${this.client.diagnostics.guild(this.service.guildId)}.`,
 				),
 			);
+
+		await this.advanceQueue();
 	}
 
 	async receiveListing({ listing }: { listing: SongListing }): Promise<void> {
@@ -639,6 +641,7 @@ class MusicSession extends EventEmitter {
 	async play({ playable }: { playable: Playable }): Promise<boolean> {
 		const track = await this.#getTrack({ playable });
 		if (track === undefined) {
+			await this.advanceQueue();
 			return false;
 		}
 
