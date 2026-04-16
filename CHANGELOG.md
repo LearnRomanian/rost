@@ -1,3 +1,7 @@
+## Next (WIP)
+
+- Fixed notices getting created and deleted in a loop.
+
 ## 5.1.0
 
 - Fixed modal composers not passing through the right data.
