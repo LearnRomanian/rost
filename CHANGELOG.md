@@ -3,6 +3,8 @@
 - Fixed notices getting created and deleted in a loop.
 - Removed unused dependencies.
 - Fixed missing channel causing voting on verifications to fail.
+- Fixed node failing to play a track causing the bot to get stuck.
+- Fixed not being able to connect to the audio node.
 
 ## 5.1.0
 
