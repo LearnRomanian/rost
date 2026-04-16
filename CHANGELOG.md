@@ -1,6 +1,7 @@
 ## Next (WIP)
 
 - Fixed notices getting created and deleted in a loop.
+- Removed unused dependencies.
 
 ## 5.1.0
 
