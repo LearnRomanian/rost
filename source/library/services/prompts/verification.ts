@@ -287,7 +287,9 @@ class VerificationPromptService extends PromptService<{
 		}
 
 		if (entryRequestDocument.ticketChannelId !== undefined) {
-			const ticketChannel = await this.client.bot.helpers.getChannel(entryRequestDocument.ticketChannelId);
+			const ticketChannel = await this.client.bot.helpers
+				.getChannel(entryRequestDocument.ticketChannelId)
+				.catch(() => undefined);
 			if (ticketChannel !== undefined) {
 				const strings = constants.contexts.inquiryInProgress({
 					localise: this.client.localise,
