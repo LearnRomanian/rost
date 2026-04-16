@@ -234,7 +234,9 @@ abstract class PromptService<
 					`Could not find existing prompt for ${document.id}. Has it been manually deleted? Recreating...`,
 				);
 
-				const user = this.client.entities.users.get(userId);
+				const user =
+					this.client.entities.users.get(userId) ??
+					(await this.client.bot.helpers.getUser(userId).catch(() => undefined));
 				if (user === undefined) {
 					this.log.warn(`Could not find the author object for ${document.id}. Invalidating submission...`);
 
@@ -330,7 +332,9 @@ abstract class PromptService<
 			return;
 		}
 
-		const user = this.client.entities.users.get(userId);
+		const user =
+			this.client.entities.users.get(userId) ??
+			(await this.client.bot.helpers.getUser(userId).catch(() => undefined));
 		if (user === undefined) {
 			return;
 		}
