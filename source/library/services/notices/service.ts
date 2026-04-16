@@ -155,8 +155,13 @@ abstract class NoticeService<Generic extends { type: NoticeTypes }> extends Loca
 			return;
 		}
 
+		// If embeds are absent from the update payload (partial update unrelated to embeds), do nothing.
+		if (message.embeds === undefined) {
+			return;
+		}
+
 		// If the embed is still present, it wasn't an embed having been deleted. Do not do anything.
-		if ((message.embeds?.length ?? 0) > 0) {
+		if (message.embeds.length > 0) {
 			return;
 		}
 
