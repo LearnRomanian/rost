@@ -5,6 +5,6 @@ type SongListingResolver = (
 	client: Client,
 	interaction: Rost.Interaction,
 	{ query }: { query: string },
-) => Promise<SongListing | undefined>;
+) => Promise<SongListing | null | undefined>;
 
 export type { SongListingResolver };

@@ -33,14 +33,21 @@ async function handleRequestQueryPlayback(
 		return;
 	}
 
+	await client.postponeReply(interaction);
+
 	const listing = await resolveToSongListing(client, interaction, { query: interaction.parameters.query });
+	if (listing === null) {
+		client.deleteReply(interaction).ignore();
+		return;
+	}
+
 	if (listing === undefined) {
 		const strings = constants.contexts.songNotFound({
 			localise: client.localise,
 			locale: interaction.locale,
 		});
 		client
-			.warning(interaction, {
+			.warned(interaction, {
 				title: strings.title,
 				description: `${strings.description.notFound}\n\n${strings.description.tryDifferentQuery}`,
 			})
@@ -49,7 +56,7 @@ async function handleRequestQueryPlayback(
 		return;
 	}
 
-	client.acknowledge(interaction).ignore();
+	client.deleteReply(interaction).ignore();
 
 	await handleRequestPlayback(client, interaction, listing);
 }
