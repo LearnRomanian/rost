@@ -15,6 +15,6 @@
 	"parameters.collection.description": "trueに設定すると、代わりにソングコレクションに対してアクションが実行される。",
 	"parameters.by.name": "による",
 	"parameters.by.description": "スキップする曲や曲リストの数。",
-	"parameters.to.name": "に変更する。",
+	"parameters.to.name": "に変更する",
 	"parameters.to.description": "スキップするトラックのインデックス。"
 }

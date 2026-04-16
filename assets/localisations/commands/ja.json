@@ -325,7 +325,7 @@
   "music.options.resume.strings.notPaused.description": "現在の曲は一時停止されない。",
   "music.options.resume.strings.resumed.title": "再開",
   "music.options.resume.strings.resumed.description": "音楽再生が再開された。",
-  "music.options.skip-to.name": "スキップ・トゥ",
+  "music.options.skip-to.name": "スキップ-トゥ",
   "music.options.skip-to.description": "現在再生中の曲の指定した箇所までスキップする。",
   "music.options.skip-to.strings.noSong.title": "タイムスタンプを求める曲がない",
   "music.options.skip-to.strings.noSong.description": "タイムスタンプを求める曲がない。",

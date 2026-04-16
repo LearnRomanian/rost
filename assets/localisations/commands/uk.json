@@ -243,7 +243,7 @@
   "music.options.loop.strings.disabled.title": "Цикл вимкнено",
   "music.options.loop.strings.disabled.description.song": "Поточна пісня більше не буде зациклюватися.",
   "music.options.loop.strings.disabled.description.songCollection": "Поточна підбірка пісень більше не буде зациклюватися.",
-  "music.options.now.name": "зараз.",
+  "music.options.now.name": "зараз",
   "music.options.now.description": "Відображає поточну пісню, що відтворюється.",
   "music.options.now.strings.noSong.title": "Не грає пісня",
   "music.options.now.strings.noSong.description": "Пісні немає, щоб показати інформацію про неї.",
