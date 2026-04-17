@@ -5,6 +5,7 @@
 - Fixed missing channel causing voting on verifications to fail.
 - Fixed node failing to play a track causing the bot to get stuck.
 - Fixed not being able to connect to the audio node.
+- Added log rotation.
 
 ## 5.1.0
 

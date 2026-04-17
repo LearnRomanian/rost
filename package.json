@@ -54,6 +54,7 @@
     "nanoid": "^5.1.5",
     "object-hash": "^3.0.0",
     "pino": "^9.7.0",
+    "pino-roll": "^4.0.0",
     "ravendb": "^7.0.1",
     "rethinkdb-ts": "^2.7.0",
     "shoukaku": "^4.1.1",

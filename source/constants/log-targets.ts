@@ -1,5 +1,11 @@
 import directories from "rost:constants/directories";
 
+const rotation = Object.freeze({
+	frequency: "daily",
+	limit: { count: 7 },
+	mkdir: true,
+});
+
 export default Object.freeze({
 	stdout: {
 		feedback: {
@@ -12,21 +18,21 @@ export default Object.freeze({
 	},
 	file: {
 		debug: {
-			target: "pino/file",
+			target: "pino-roll",
 			level: "debug",
-			options: { destination: `${directories.logs}/debug-log.os`, mkdir: true },
+			options: { file: `${directories.logs}/debug-log.os`, ...rotation },
 		},
 		standard: {
-			target: "pino/file",
+			target: "pino-roll",
 			level: "info",
-			options: { destination: `${directories.logs}/log.os`, mkdir: true },
+			options: { file: `${directories.logs}/log.os`, ...rotation },
 		},
 		discordeno: {
-			target: "pino/file",
+			target: "pino-roll",
 			level: "debug",
 			options: {
-				destination: `${directories.logs}/discordeno-log.os`,
-				mkdir: true,
+				file: `${directories.logs}/discordeno-log.os`,
+				...rotation,
 			},
 		},
 	},
