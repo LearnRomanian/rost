@@ -5,6 +5,7 @@
 - Fixed missing channel causing voting on verifications to fail.
 - Fixed node failing to play a track causing the bot to get stuck.
 - Fixed not being able to connect to the audio node.
+- Fixed not being able to close inquiries for people who have left the server.
 
 ## 5.1.0
 
@@ -14,7 +15,6 @@
 - Updated all notices + the `/profile roles` command to use components V2.
 - Improved logging around database failures.
 - Added 'Politics' itself to banned topics.
-- Fixed not being able to close inquiries for people who have left the server.
 
 ## 5.0.0
 
