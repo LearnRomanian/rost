@@ -264,7 +264,7 @@
   "music.options.pause.description": "Pozastaví aktuálně přehrávanou skladbu nebo kolekci skladeb.",
   "music.options.pause.strings.paused.title": "Pauza",
   "music.options.pause.strings.paused.description": "Pozastavil přehrávání hudby.",
-  "music.options.play.name": "přehrát",
+  "music.options.play.name": "hrát",
   "music.options.play.description": "Umožňuje uživateli přehrávat hudbu v hlasovém kanálu.",
   "music.options.play.options.stream.name": "stream",
   "music.options.play.options.stream.description": "Přehrává zvukový proud.",

@@ -325,7 +325,7 @@
   "music.options.resume.strings.notPaused.description": "Bài hát hiện tại không bị tạm dừng.",
   "music.options.resume.strings.resumed.title": "Tiếp tục",
   "music.options.resume.strings.resumed.description": "Phát nhạc đã được tiếp tục.",
-  "music.options.skip-to.name": "bỏ-qua",
+  "music.options.skip-to.name": "bỏ-qua-vị-trí",
   "music.options.skip-to.description": "Bỏ qua đến một điểm nhất định trong bài hát đang phát.",
   "music.options.skip-to.strings.noSong.title": "Không có bài hát để tìm dấu thời gian",
   "music.options.skip-to.strings.noSong.description": "Không có bài hát nào để tìm dấu thời gian.",

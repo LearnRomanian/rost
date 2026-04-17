@@ -36,14 +36,14 @@ async function resolveYouTubeSongListings(
 	return undefined;
 }
 
-async function search(client: Client, interaction: Rost.Interaction, query: string): Promise<SongListing | undefined> {
+async function search(client: Client, interaction: Rost.Interaction, query: string): Promise<SongListing | null | undefined> {
 	const resultsAll = await youtube.search(query, { limit: 20, type: "all", safeSearch: false });
 	const results = resultsAll.items.filter((element) => isPlaylist(element) || isVideo(element));
 	if (results.length === 0) {
 		return undefined;
 	}
 
-	const { promise, resolve } = Promise.withResolvers<SongListing | undefined>();
+	const { promise, resolve } = Promise.withResolvers<SongListing | null>();
 
 	const selectMenuSelection = new InteractionCollector(client, { only: [interaction.user.id], isSingle: true });
 
@@ -52,23 +52,23 @@ async function search(client: Client, interaction: Rost.Interaction, query: stri
 
 		const indexString = selection.data?.values?.at(0);
 		if (indexString === undefined) {
-			return resolve(undefined);
+			return resolve(null);
 		}
 
 		const index = Number(indexString);
 		if (!Number.isSafeInteger(index)) {
-			return resolve(undefined);
+			return resolve(null);
 		}
 
 		const result = results.at(index);
 		if (result === undefined) {
-			return resolve(undefined);
+			return resolve(null);
 		}
 
 		if (isPlaylist(result)) {
 			const playlist = await youtube.getPlaylist(result.id);
 			if (playlist === undefined) {
-				return resolve(undefined);
+				return resolve(null);
 			}
 
 			return resolve(getSongListingFromPlaylist(playlist, interaction.user.id));
@@ -77,7 +77,7 @@ async function search(client: Client, interaction: Rost.Interaction, query: stri
 		return resolve(getSongListingFromVideo(result, interaction.user.id));
 	});
 
-	selectMenuSelection.onDone(() => resolve(undefined));
+	selectMenuSelection.onDone(() => resolve(null));
 
 	await client.registerInteractionCollector(selectMenuSelection);
 
@@ -103,7 +103,7 @@ async function search(client: Client, interaction: Rost.Interaction, query: stri
 
 	const strings = constants.contexts.selectSong({ localise: client.localise, locale: interaction.locale });
 	client
-		.notice(interaction, {
+		.noticed(interaction, {
 			embeds: [
 				{
 					title: strings.title,

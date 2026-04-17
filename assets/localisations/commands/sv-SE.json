@@ -364,7 +364,7 @@
   "music.options.stop.description": "Avbryter den aktuella lyssningssessionen och rensar kö och låthistorik.",
   "music.options.stop.strings.stopped.title": "Stoppad",
   "music.options.stop.strings.stopped.description": "Lyssningssessionen har avbrutits och låtkön och historiken har rensats.",
-  "music.options.unskip.name": "hoppa-över",
+  "music.options.unskip.name": "ta-tillbaka",
   "music.options.unskip.description": "Återställer den senast spelade låten.",
   "music.options.unskip.strings.historyEmpty.title": "Historien är tom",
   "music.options.unskip.strings.historyEmpty.description": "Det finns inga låtlistor att ta med tillbaka.",
