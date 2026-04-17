@@ -5,6 +5,7 @@
 - Fixed missing channel causing voting on verifications to fail.
 - Fixed node failing to play a track causing the bot to get stuck.
 - Fixed not being able to connect to the audio node.
+- The bot now registers who was responsible for a given moderation action.
 
 ## 5.1.0
 
