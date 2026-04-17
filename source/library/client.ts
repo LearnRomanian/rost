@@ -33,6 +33,7 @@ class Client {
 	readonly #connection: DiscordConnection;
 
 	readonly #channelDeletes: Collector<"channelDelete">;
+	readonly #auditLogEntries: Collector<"guildAuditLogEntryCreate">;
 
 	#isStopping = false;
 	#stopSignal: string | undefined;
@@ -213,6 +214,7 @@ class Client {
 		});
 
 		this.#channelDeletes = new Collector<"channelDelete">();
+		this.#auditLogEntries = new Collector<"guildAuditLogEntryCreate">();
 	}
 
 	async #setupCollectors(): Promise<void> {
@@ -226,7 +228,12 @@ class Client {
 			}
 		});
 
+		this.#auditLogEntries.onCollect((entry, guildId) => {
+			this.#cache.cacheAuditLogEntry(guildId, entry);
+		});
+
 		await this.registerCollector("channelDelete", this.#channelDeletes);
+		await this.registerCollector("guildAuditLogEntryCreate", this.#auditLogEntries);
 
 		this.log.info("Event collectors set up.");
 	}
@@ -235,6 +242,7 @@ class Client {
 		this.log.info("Tearing down event collectors...");
 
 		this.#channelDeletes.close();
+		this.#auditLogEntries.close();
 
 		this.log.info("Event collectors torn down.");
 	}

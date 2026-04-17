@@ -26,6 +26,7 @@ class CacheStore {
 		};
 		readonly attachments: Map<bigint, Rost.Attachment>;
 		readonly roles: Map<bigint, Rost.Role>;
+		readonly auditLogEntries: Map</* guildId: */ bigint, Discord.AuditLogEntry[]>;
 	};
 	readonly documents: {
 		readonly entryRequests: Map<string, EntryRequest>;
@@ -55,6 +56,7 @@ class CacheStore {
 			},
 			attachments: new Map(),
 			roles: new Map(),
+			auditLogEntries: new Map(),
 		};
 		this.documents = {
 			entryRequests: new Map(),
@@ -178,6 +180,20 @@ class CacheStore {
 			this.entities.guilds.get(voiceState.guildId)?.voiceStates?.set(voiceState.userId, voiceState);
 		} else {
 			this.entities.guilds.get(voiceState.guildId)?.voiceStates?.delete(voiceState.userId);
+		}
+	}
+
+	cacheAuditLogEntry(guildId: bigint, entry: Discord.AuditLogEntry): void {
+		const entries = this.entities.auditLogEntries.get(guildId);
+		if (entries === undefined) {
+			this.entities.auditLogEntries.set(guildId, [entry]);
+			return;
+		}
+
+		entries.push(entry);
+
+		if (entries.length > 100) {
+			entries.shift();
 		}
 	}
 

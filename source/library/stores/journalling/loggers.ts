@@ -28,6 +28,24 @@ import slowmodeUpgrade from "rost/stores/journalling/rost/slowmode-upgrade";
 import suggestionSend from "rost/stores/journalling/rost/suggestion-send";
 import ticketOpen from "rost/stores/journalling/rost/ticket-open";
 
+function findAuditEntry(
+	client: Client,
+	guildId: bigint | undefined,
+	actionType: Discord.AuditLogEvents,
+	predicate: (entry: Discord.AuditLogEntry) => boolean,
+): Discord.AuditLogEntry | undefined {
+	if (guildId === undefined) {
+		return undefined;
+	}
+
+	const now = Date.now();
+	return client.entities.auditLogEntries
+		.get(guildId)
+		?.filter((entry) => entry.actionType === actionType)
+		.filter((entry) => Discord.snowflakeToTimestamp(entry.id) >= now - constants.time.second * 5)
+		.find(predicate);
+}
+
 type Events = Rost.Events & Discord.Events;
 
 const loggers: EventLoggers = Object.freeze({
@@ -68,4 +86,5 @@ type EventLogger<Event extends keyof Events> = (
 ) => PromiseOr<Discord.CreateMessageOptions | undefined>;
 
 export default loggers;
+export { findAuditEntry };
 export type { EventLogger, EventLoggers };

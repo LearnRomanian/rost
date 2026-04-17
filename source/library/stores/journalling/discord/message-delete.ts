@@ -1,5 +1,6 @@
 import { codeMultiline, mention } from "rost:constants/formatting";
 import { isDefined } from "rost:core/utilities";
+import { findAuditEntry } from "rost/stores/journalling/loggers";
 import type { EventLogger } from "rost/stores/journalling/loggers";
 
 const logger: EventLogger<"messageDelete"> = (client, [payload, _], { guildLocale }) => {
@@ -9,6 +10,26 @@ const logger: EventLogger<"messageDelete"> = (client, [payload, _], { guildLocal
 	}
 
 	const strings = constants.contexts.messageDelete({ localise: client.localise, locale: guildLocale });
+
+	const auditEntry = findAuditEntry(
+		client,
+		payload.guildId,
+		Discord.AuditLogEvents.MessageDelete,
+		(entry) => entry.targetId === message.author.id && entry.options?.channelId === payload.channelId,
+	);
+
+	const description =
+		auditEntry?.userId !== undefined
+			? strings.descriptionBy({
+				user: client.diagnostics.user(message.author),
+				channel: mention(message.channelId, { type: "channel" }),
+				moderator: client.diagnostics.user(auditEntry.userId),
+			})
+			: strings.description({
+				user: client.diagnostics.user(message.author),
+				channel: mention(message.channelId, { type: "channel" }),
+			});
+
 	return {
 		flags: Discord.MessageFlags.IsComponentV2,
 		components: [
@@ -18,10 +39,7 @@ const logger: EventLogger<"messageDelete"> = (client, [payload, _], { guildLocal
 				components: [
 					{
 						type: Discord.MessageComponentTypes.TextDisplay,
-						content: `# ${constants.emojis.events.message.deleted} ${strings.title}\n${strings.description({
-							user: client.diagnostics.user(message.author),
-							channel: mention(message.channelId, { type: "channel" }),
-						})}`,
+						content: `# ${constants.emojis.events.message.deleted} ${strings.title}\n${description}`,
 					},
 					{
 						type: Discord.MessageComponentTypes.Separator,

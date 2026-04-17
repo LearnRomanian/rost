@@ -1,7 +1,7 @@
 import type pino from "pino";
 import type { Client } from "rost/client";
 import { Collector } from "rost/collectors";
-import loggers from "rost/stores/journalling/loggers";
+import loggers, { findAuditEntry } from "rost/stores/journalling/loggers";
 
 type Events = Rost.Events & Discord.Events;
 
@@ -143,13 +143,13 @@ class JournallingStore {
 	}
 
 	async #guildMemberRemove(user: Discord.User, guildId: bigint): Promise<void> {
-		const kickInformation = await this.#getKickInformation({ user, guildId });
-		if (kickInformation !== undefined) {
-			if (kickInformation.userId === null) {
+		const kickEntry = this.#getKickEntry({ user, guildId });
+		if (kickEntry !== undefined) {
+			if (kickEntry.userId === undefined) {
 				return;
 			}
 
-			const authorMember = this.#client.entities.members.get(guildId)?.get(BigInt(kickInformation.userId));
+			const authorMember = this.#client.entities.members.get(guildId)?.get(kickEntry.userId);
 			if (authorMember === undefined) {
 				return;
 			}
@@ -201,34 +201,13 @@ class JournallingStore {
 		await this.tryLog("messageUpdate", { guildId, args: [message] });
 	}
 
-	async #getKickInformation({
-		user,
-		guildId,
-	}: { user: Rost.User; guildId: bigint }): Promise<Discord.Camelize<Discord.DiscordAuditLogEntry> | undefined> {
-		const now = Date.now();
-
+	#getKickEntry({ user, guildId }: { user: Rost.User; guildId: bigint }): Discord.AuditLogEntry | undefined {
 		const guildDocument = this.#client.documents.guilds.get(guildId.toString());
-		if (guildDocument === undefined) {
+		if (guildDocument === undefined || !guildDocument.hasEnabled("journalling")) {
 			return undefined;
 		}
 
-		if (!guildDocument.hasEnabled("journalling")) {
-			return undefined;
-		}
-
-		const auditLog = await this.#client.bot.helpers
-			.getAuditLog(guildId, { actionType: Discord.AuditLogEvents.MemberKick })
-			.catch((error) => {
-				this.log.warn(error, `Could not get audit log for ${this.#client.diagnostics.guild(guildId)}.`);
-				return undefined;
-			});
-		if (auditLog === undefined) {
-			return undefined;
-		}
-
-		return auditLog.auditLogEntries
-			.filter((entry) => Discord.snowflakeToTimestamp(BigInt(entry.id)) >= now - constants.time.second * 5)
-			.find((entry) => entry.targetId === user.id.toString());
+		return findAuditEntry(this.#client, guildId, Discord.AuditLogEvents.MemberKick, (entry) => entry.targetId === user.id);
 	}
 }
 

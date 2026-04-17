@@ -951,10 +951,12 @@ export default Object.freeze({
 	guildBanAdd: ({ localise, locale }) => ({
 		title: localise("events.banAdd.title", locale)(),
 		description: localise("events.banAdd.description", locale),
+		descriptionBy: localise("events.banAdd.descriptionBy", locale),
 	}),
 	guildBanRemove: ({ localise, locale }) => ({
 		title: localise("events.banRemove.title", locale)(),
 		description: localise("events.banRemove.description", locale),
+		descriptionBy: localise("events.banRemove.descriptionBy", locale),
 	}),
 	guildMemberAdd: ({ localise, locale }) => ({
 		title: localise("events.memberAdd.title", locale)(),
@@ -967,6 +969,7 @@ export default Object.freeze({
 	messageDelete: ({ localise, locale }) => ({
 		title: localise("events.messageDelete.title", locale)(),
 		description: localise("events.messageDelete.description", locale),
+		descriptionBy: localise("events.messageDelete.descriptionBy", locale),
 		fields: {
 			content: localise("events.messageDelete.fields.content", locale)(),
 		},
@@ -974,6 +977,7 @@ export default Object.freeze({
 	messageDeleteBulk: ({ localise, locale }) => ({
 		title: localise("events.messageDeleteBulk.title", locale)(),
 		description: localise("events.messageDeleteBulk.description", locale),
+		descriptionBy: localise("events.messageDeleteBulk.descriptionBy", locale),
 	}),
 	messageUpdate: ({ localise, locale }) => ({
 		title: localise("events.messageUpdate.title", locale)(),

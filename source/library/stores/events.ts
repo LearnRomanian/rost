@@ -51,6 +51,8 @@ class EventStore {
 			roleCreate: (role) => this.collectEvent(role.guildId, "roleCreate", { args: [role] }),
 			roleDelete: (role) => this.collectEvent(role.guildId, "roleDelete", { args: [role] }),
 			roleUpdate: (role) => this.collectEvent(role.guildId, "roleUpdate", { args: [role] }),
+			guildAuditLogEntryCreate: (entry, guildId) =>
+				this.collectEvent(guildId, "guildAuditLogEntryCreate", { args: [entry, guildId] }),
 		};
 	}
 
